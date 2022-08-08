@@ -3,21 +3,18 @@ using ShopOnline.Api.Entities;
 
 namespace ShopOnline.Api.Data
 {
-    public class ShopOnlineDbContext : DbContext
-    {
+	public class ShopOnlineDbContext : DbContext
+	{
 		public ShopOnlineDbContext(DbContextOptions<ShopOnlineDbContext> options) : base(options)
 		{
 
 		}
-		public DbSet<Cart> Carts { get; set; }
-		public DbSet<CartItem> CartItems { get; set; }
-		public DbSet<Product> Products { get; set; }
-		public DbSet<ProductCategory> ProductCategories { get; set; }
-		public DbSet<User> Users { get; set; }
 
-		protected override void OnModekCreating(ModelBuilder modelBuilder)
-        {
-
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+			//Products
+			//Beauty Category
 			modelBuilder.Entity<Product>().HasData(new Product
 			{
 				Id = 1,
@@ -267,13 +264,13 @@ namespace ShopOnline.Api.Data
 			modelBuilder.Entity<User>().HasData(new User
 			{
 				Id = 1,
-				Username = "Veselin"
+				Username = "Bob"
 
 			});
 			modelBuilder.Entity<User>().HasData(new User
 			{
 				Id = 2,
-				Username = "Lychezara"
+				Username = "Sarah"
 
 			});
 
@@ -294,25 +291,33 @@ namespace ShopOnline.Api.Data
 			modelBuilder.Entity<ProductCategory>().HasData(new ProductCategory
 			{
 				Id = 1,
-				Name = "Beauty"
+				Name = "Beauty",
 			});
 			modelBuilder.Entity<ProductCategory>().HasData(new ProductCategory
 			{
 				Id = 2,
-				Name = "Furniture"
+				Name = "Furniture",
 			});
 			modelBuilder.Entity<ProductCategory>().HasData(new ProductCategory
 			{
 				Id = 3,
-				Name = "Electronics"
+				Name = "Electronics",
 			});
 			modelBuilder.Entity<ProductCategory>().HasData(new ProductCategory
 			{
 				Id = 4,
-				Name = "Shoes"
+				Name = "Shoes",
+				
 			});
+
+
 		}
 
-	
+		public DbSet<Cart> Carts { get; set; }
+		public DbSet<CartItem> CartItems { get; set; }
+		public DbSet<Product> Products { get; set; }
+		public DbSet<ProductCategory> ProductCategories { get; set; }
+		public DbSet<User> Users { get; set; }
+
 	}
 }
