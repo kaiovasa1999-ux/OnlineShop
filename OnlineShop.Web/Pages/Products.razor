@@ -1,0 +1,18 @@
+﻿@page "/"
+@using ShopOnline.Model.DTO;
+@inherits ProductsBase
+
+@if (Products == null)
+{
+    <h3>Loading products...</h3>
+}
+else
+{
+    <h3 class="mb-5">Products</h3>
+    var productsCount = Products.Count();
+    if (productsCount > 0)
+    {
+        const int productsPerRow = 4;
+        var products = new List<ProductDTO>();
+    }
+}
