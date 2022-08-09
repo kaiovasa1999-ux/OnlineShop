@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ShopOnline.Api.Data;
+using ShopOnline.Api.Repositories;
 using ShopOnline.Api.Repositories.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +16,12 @@ builder.Services.AddDbContext<ShopOnlineDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ShopOnlineConnection"))
 );
 
-builder.Services.AddScoped<IProductRepo, IProductRepo>();
+builder.Services.AddScoped<IProductRepo, ProductRepo>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment()) 
 {
     app.UseSwagger();
     app.UseSwaggerUI();
