@@ -21,6 +21,19 @@ else
                 <div>
                     @foreach (var item in productsPerRow)
                     {
+                        <div class="col md-3">
+                            <a href=#>
+                                <div class="card">
+                                    <img class="img-thumbnail" src="@item.ImageURL">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-3">
+                                            @item.Name
+                                        </h5>
+                                        <p class="card-text">@item.Price.ToString()</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                       
                     }
                 </div>
